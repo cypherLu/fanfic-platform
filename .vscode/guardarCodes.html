@@ -1,0 +1,12 @@
+search = request.GET.get('search')
+if search:
+    if "home" in request.get_full_path():
+      fanfics = fanfic.objects.filter(title__icontains=search)
+    else:
+       return redirect('/home')
+else:
+  fanfics_list = fanfic.objects.all()
+  paginator = Paginator(fanfics_list, 3)
+  page = request.GET.get('page')
+  fanfics = paginator.get_page(page)
+return render(request, 'kilig.html', {'fanfics': fanfics})

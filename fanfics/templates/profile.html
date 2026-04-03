@@ -1,0 +1,22 @@
+{% extends "kilig.html" %}
+{% block title %} {{profile_user.username}} {% endblock %}
+
+{% block content %}
+
+<h1>{{ profile_user.username }}</h1>
+
+{% if user.profile.avatar %}
+  <img src="{{ user.profile.avatar.url }}" width="100">
+{% else %}
+  <img src="/media/avatars/default.jpg" width="100">
+{% endif %}
+
+<p>{{ profile.bio }}</p>
+<p>{{ profile.country }}</p>
+
+<h2>Fanfics</h2>
+
+{% for fanfic in fanfics %}
+  <p>{{ fanfic.title }}</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "kilig.html" %}
+{% block title %} {{chapter.chapterName}} {% endblock %}
+
+            {% block content %}
+            <h1>{{ fanfic.title }}</h1>
+            <h2>{{ chapter.chapterName }}</h2>
+
+            <!-- notas iniciais -->
+            {% if chapter.notes_start %}
+            <div class="notes">
+                {{ chapter.notes_start|safe }}
+            </div>
+            {% endif %}
+
+            <!-- conteúdo -->
+            <div class="story">
+            {{ chapter.story|safe }}
+            </div>
+
+            <!-- notas finais -->
+            {% if chapter.notes_end %}
+            <div class="notes">
+                {{ chapter.notes_end|safe }}
+            </div>
+            {% endif %}
+            <!-- navegação -->
+            <div class="navigation">
+
+            {% if prev_chapter %}
+                <a href="{% url 'read-chapter' fanfic.id prev_chapter.order %}">
+                ⬅ Capítulo anterior
+                </a>
+            {% endif %}
+
+            {% if next_chapter %}
+                <a href="{% url 'read-chapter' fanfic.id next_chapter.order %}">
+                Próximo capítulo ➡
+                </a>
+            {% endif %}
+            {% endblock %}

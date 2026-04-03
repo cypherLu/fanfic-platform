@@ -1,0 +1,14 @@
+{% extends "kilig.html" %}
+{% block title %} Register {% endblock %}
+
+{% block content %}
+<h2>Cadastro</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Criar conta</button>
+</form>
+
+<p>Já tem conta? <a href="/accounts/login/">Login</a></p>
+{% endblock %}

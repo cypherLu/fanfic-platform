@@ -1,0 +1,10 @@
+{% extends 'kilig.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>add new chapter:</h1>
+            <form method="post" style="size: 50px;">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="add chapter">
+            </form>
+            {% endblock %}

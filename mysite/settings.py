@@ -29,6 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://fanfic-platform.onrender.com"
+]
 
 # Application definition
 

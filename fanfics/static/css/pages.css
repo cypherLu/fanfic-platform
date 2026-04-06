@@ -1,3 +1,68 @@
+.kilig-form {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: auto;
+}
+
+.kilig-input,
+.kilig-textarea {
+  width: 95%;
+  max-width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #e0aaff;
+  margin-bottom: 15px;
+}
+
+.django-ckeditor-widget{
+  width: 100%
+}
+
+.kilig-file {
+  border: 2px dashed #e0aaff;
+  padding: 15px;
+  border-radius: 10px;
+  background: #faf5ff;
+  cursor: pointer;
+  width: 90%;
+}
+
+.kilig-file::file-selector-button {
+  background: purple;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.kilig-btn {
+  background: purple;
+  color: white;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.all-in-titles{
+  margin-bottom: 70px;
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+}
+
+.all-forms{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .fanfic_container {
   padding: 20px;
   display: flex;
@@ -49,6 +114,7 @@
 }
 /*CHAPTERS*/
 .story {
+  word-break: break-all;
   max-width: 700px;
   margin: auto;
   line-height: 1.8;
@@ -83,4 +149,13 @@
 }
 .edit-profile{
     width: 20px;
+}
+
+#preview {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid purple;
+  margin-bottom: 10px;
 }

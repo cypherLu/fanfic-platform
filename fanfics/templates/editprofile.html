@@ -4,31 +4,37 @@
 
 
 {% block content %}
-<h2>Editar Perfil</h2>
+<h2 class="all-in-titles">Edit Profile</h2>
 
-<form method="POST" enctype="multipart/form-data">
+<div class="all-forms">
   {% csrf_token %}
-  {{ form|crispy }}
-  <!-- FOTO ATUAL -->
+<form method="POST" enctype="multipart/form-data">
   {% if user.profile.avatar %}
     <img id="preview" src="{{ user.profile.avatar.url }}" width="120">
   {% else %}
     <img id="preview" src="/media/avatars/default.jpg" width="120">
+    
   {% endif %}
+  {% crispy form %}
 
-  <!-- INPUT DE IMAGEM -->
-  <input type="file" name="avatar" accept="image/*" onchange="previewImage(event)">
-
-  <!-- OUTROS CAMPOS -->
-  {{ form.bio }}
-  {{ form.country }}
-
-  <button type="submit">Salvar</button>
 </form>
+</div>
+
 <script>
-function previewImage(event) {
-  const img = document.getElementById('preview');
-  img.src = URL.createObjectURL(event.target.files[0]);
-}
+document.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById("avatar-input");
+    const preview = document.getElementById("preview");
+
+    if (input) {
+        input.addEventListener("change", function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+            }
+        });
+    }
+});
 </script>
+
 {% endblock %}

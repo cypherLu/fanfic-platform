@@ -4,7 +4,7 @@ A full-stack web application for publishing, reading, and managing fanfictions. 
 
 **LIVE DEMO**
 
-https://fanfic-app.onrender.com
+https://fanfic-platform.onrender.com
 
 **TECHNOLOGIES**
 

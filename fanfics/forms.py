@@ -5,16 +5,26 @@ from .models import Fanfic, Chapter, Profile
 class fanficForm(forms.ModelForm):
     class Meta:
         model = Fanfic
-        fields = ('cover','title', 'synopsis', 'status','tags','fandoms','categories','language')
+        fields = (
+            'cover',
+            'title',
+            'synopsis',
+            'status',
+            'tags',
+            'fandoms',
+            'categories',
+            'language',
+            'is_public',
+        )
         widgets = {
             'cover': forms.ClearableFileInput(attrs={'class': 'kilig-file'}),
             'title': forms.TextInput(attrs={'class': 'kilig-input'}),
             'synopsis': forms.Textarea(attrs={'class': 'kilig-textarea'}),
             'status': forms.Select(attrs={'class': 'kilig-input'}),
-            'tags': forms.TextInput(attrs={'class': 'kilig-input'}),
-            'fandoms': forms.TextInput(attrs={'class': 'kilig-input'}),
+            'tags': forms.TextInput(attrs={'class': 'kilig-input','id': 'id_tags'}),
+            'fandoms': forms.TextInput(attrs={'class': 'kilig-input','id': 'id_fandoms'}),
             'categories': forms.Select(attrs={'class': 'kilig-input'}),
-            'language': forms.Select(attrs={'class': 'kilig-input'}),
+            'language': forms.Select(attrs={'class': 'kilig-input', 'id': 'id_language'}),
         }
 
 class ChapterForm(forms.ModelForm):

@@ -57,10 +57,10 @@ class Fanfic(models.Model):
         max_length=20,
         choices=STATUS_CHOICES,
     )
-    tags = models.ManyToManyField(Tag, blank=True)
-    fandoms = models.ManyToManyField(Fandom, blank=True)
-    categories = models.ManyToManyField(Category, blank=True)
-    language = models.CharField(max_length=30, default="en")
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
+    fandoms = models.ManyToManyField(Fandom, blank=True, null=True)
+    categories = models.ManyToManyField(Category, blank=True, null=True)
+    language = models.CharField(max_length=30, default="en", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="fanfics")

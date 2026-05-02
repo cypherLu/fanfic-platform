@@ -2,6 +2,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 src="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic"
 
 
+
 /*OPEN FANFICS BY CLICKING ON THE CARD*/
     function openFanfic(id){
     window.location.href = "/fanfic/" + id

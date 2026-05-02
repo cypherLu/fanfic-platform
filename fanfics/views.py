@@ -69,7 +69,7 @@ def fanficView(request, id):
 @login_required
 def newFanfic(request):
     if request.method == 'POST':
-        form = fanficForm(request.POST)
+        form = fanficForm(request.POST, request.FILES)
         if form.is_valid():
             fanfic = form.save(commit=False) 
             fanfic.author = request.user      
@@ -119,17 +119,18 @@ def newchapter(request, id):
     if request.method == 'POST':
         form = ChapterForm(request.POST)
         if form.is_valid():
-            Chapter = form.save(commit=False)
-            Chapter.fanfic = fanfic
+            chapter = form.save(commit=False)
+            chapter.story = request.POST.get('story')
+            chapter.fanfic = fanfic
 
             last_chapter = fanfic.chapters.order_by('-order').first()
 
             if last_chapter:
-                Chapter.order = last_chapter.order + 1
+                chapter.order = last_chapter.order + 1
             else:
-                Chapter.order = 1
+                chapter.order = 1
 
-            Chapter.save()
+            chapter.save()
             return redirect('fanfic-view', id=id)
 
     else:

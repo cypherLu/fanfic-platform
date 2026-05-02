@@ -1,11 +1,32 @@
 {% extends 'kilig.html' %}
-{% load crispy_forms_tags %}
 {% block content %}
 <h1 class="all-in-titles">Add new chapter:</h1>
         <div class="all-forms">
-            <form method="post">
+            <form method="post" id="chapter-form">
                 {% csrf_token %}
-                {% crispy form %}
+                {% for field in form %}
+                    {% if field.name != "story" %}
+                <div class="form-group">
+                    <label class="form-label">{{ field.label }}</label>
+                    
+                    {{ field }}
+                    
+                    {% if field.errors %}
+                    <div class="error">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="form-group">
+                <label class="form-label">Story</label>
+
+                <div id="editor"></div>
+
+                <input type="hidden" name="story" id="hidden-input">
+                </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Chapter</button>
             </form>
         </div>
             {% endblock %}

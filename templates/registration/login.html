@@ -1,5 +1,4 @@
 {% extends 'kilig.html' %}
-{% load crispy_forms_tags %}
 
 {% block title %} Login {% endblock %}
 
@@ -13,7 +12,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}">
 
-                    {{ form|crispy }}
+                    {{ form }}
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                     <div class="link">
                     <p>Não tem conta?</p>

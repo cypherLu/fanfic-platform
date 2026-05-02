@@ -76,7 +76,7 @@ class Fanfic(models.Model):
 class Chapter(models.Model):
 
     chapterName = models.CharField(max_length=255)
-    story = RichTextField()
+    story = models.TextField()
     fanfic = models.ForeignKey(Fanfic, on_delete=models.CASCADE, related_name= 'chapters')
     order = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)

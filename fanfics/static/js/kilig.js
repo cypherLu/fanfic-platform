@@ -58,3 +58,35 @@ function changeColor() {
     main.style.fill = color;
   }
 }
+
+/* QUILL EDITOR FUNCTION */
+document.addEventListener("DOMContentLoaded", function () {
+  const editor = document.querySelector('#editor');
+  const form = document.querySelector('#chapter-form');
+  const hiddenInput = document.querySelector('#hidden-input');
+
+  if (editor && form && hiddenInput) {
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [['bold', 'italic', 'underline']]
+      }
+    });
+
+    form.addEventListener("submit", function (e) {
+      const content = quill.root.innerHTML;
+
+      console.log("ENVIANDO:", content); // 🔥 DEBUG
+
+      hiddenInput.value = content;
+
+      // 🔥 força atualização antes de enviar
+      if (!content || content === "<p><br></p>") {
+        e.preventDefault();
+        alert("Escreva algo antes de enviar!");
+      }
+    });
+  } else {
+    console.log("ERRO: editor ou form ou input não encontrado");
+  }
+});

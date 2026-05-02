@@ -1,5 +1,4 @@
 {% extends "kilig.html" %}
-{% load crispy_forms_tags %}
 {% block title %} add new fanfic {% endblock %}
 
             {% block content %}
@@ -8,7 +7,20 @@
             <div class="all-forms">
             <form method="post" style="size: 50px;">
                 {% csrf_token %}
-                {% crispy form %}
+                {% for field in form %}
+                <div class="form-group">
+                    <label class="form-label">{{ field.label }}</label>
+                    
+                    {{ field }}
+                    
+                    {% if field.errors %}
+                    <div class="error">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            <button type="submit" class="btn btn-primary btn-block">Add Fanfic</button>
                 
             </form>
             </div>
